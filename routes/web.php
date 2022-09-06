@@ -38,20 +38,41 @@ Route::get('/', function () {
 
 //pratikum 3
 
-Route::get('/home',[CompanyProfilController::class, 'index']);
+Route::get('/home',[CompanyProfilController::class, 'home']);
 
+//category masuk halaman dulu
 Route::prefix('category')->group(function(){
     Route::get('/{id}', [CompanyProfilController::class, 'products']);
 
 });
+//langsung link halaman
+// Route::prefix('category')->group(function(){
+//     Route::get('/produk', [CompanyProfilController::class, 'produk']);
+//     Route::get('/produk2', [CompanyProfilController::class, 'produk2']);
+//     Route::get('/produk3', [CompanyProfilController::class, 'produk3']);
+//     Route::get('/produk4', [CompanyProfilController::class, 'produk4']);
+// });
 
+//berita masuk halaman dulu
 Route::get('/news/{id?}',[CompanyProfilController::class, 'news']);
+
+//langsung link halaman
+// Route::get('/berita', [CompanyProfilController::class, 'berita']);
+// Route::get('/berita/{id}', [CompanyProfilController::class, 'contoh_berita']);
 
 Route::prefix('program')->group(function(){
     Route::get('/{id}', [CompanyProfilController::class, 'program']);
 
 });
 
+//langsung link
+// Route::prefix('program')->group(function(){
+//     Route::get('/karir', [CompanyProfilController::class, 'karir']);
+//     Route::get('/magang', [CompanyProfilController::class, 'magang']);
+//     Route::get('/kunjungan_industri', [CompanyProfilController::class, 'kunjungan_industri']);
+// });
+
+//langsung link
 Route::get('/AboutUs',[CompanyProfilController::class, 'about']);
 
-Route::resource('contactUs',CompanyProfilController::class);
+Route::resource('/contactUs', CompanyProfilController::class);
